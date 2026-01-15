@@ -1,0 +1,1065 @@
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Audit - Automated UX &amp; UI Platform</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#1e293b',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'spin-slow': 'spin 3s linear infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities not in Tailwind default config */
+        body {
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Loader Animation */
+        .loader-bar {
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900 font-sans selection:bg-slate-900 selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 border-b border-slate-200 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <a href="#" onclick="router('/')" class="flex items-center gap-2 group">
+                    <div
+                        class="w-8 h-8 bg-slate-900 rounded text-white flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                        <span class="iconify" data-icon="lucide:scan-eye" data-width="18"
+                            data-stroke-width="1.5"></span>
+                    </div>
+                    <span class="font-semibold text-lg tracking-tight text-slate-900">UX Audit</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" onclick="router('#how-it-works')"
+                        class="text-sm text-slate-600 hover:text-slate-900 transition-colors">How It Works</a>
+                    <a href="#" onclick="router('#features')"
+                        class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Features</a>
+                    <a href="Pricing.html"
+                        class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
+                </div>
+
+                <!-- Auth / CTA -->
+                <div class="flex items-center gap-3">
+                    <a href="Login.html"
+                        class="hidden md:block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Log
+                        in</a>
+                    <a href="Signup.html"
+                        class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-4 py-2 rounded-md shadow-sm transition-all flex items-center gap-2">
+                        <span>Get Started</span>
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="16"
+                            data-stroke-width="1.5"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE CONTAINER -->
+    <!-- PAGE CONTAINER -->
+    <main id="app" class="pt-16 min-h-screen">
+        <!-- Views will be injected here by JS -->
+    </main>
+
+    <!-- Supabase & App Logic -->
+    <!-- Supabase & App Logic -->
+    <script type="module" src="../assets/js/app.js"></script>
+
+    <script>
+        // Simple Hash Router
+        const routes = {
+            '/': 'tpl-landing',
+            '#how-it-works': 'tpl-landing', // Scroll to section handled separately if needed, or mapped to landing
+            '#features': 'tpl-landing',
+            '/pricing': 'tpl-pricing',
+            '/login': 'tpl-auth',
+            '/signup': 'tpl-auth',
+            '/dashboard': 'tpl-dashboard' // In a real app this might be a separate HTML file, but here we can demo it or redirect
+        };
+
+        function router(path) {
+            // Handle redirects to actual files for dashboard
+            if (path.startsWith('/dashboard')) {
+                window.location.href = 'Dashboard_Homepage.html';
+                return;
+            }
+
+            // Handle internal SPA routes
+            const app = document.getElementById('app');
+            let templateId = routes[path] || 'tpl-landing';
+
+            // Special handling for hash anchors on landing page
+            if (path.startsWith('#')) {
+                templateId = 'tpl-landing';
+                // push state but stay on page
+            } else {
+                window.history.pushState({}, '', path);
+            }
+
+            // Render Template
+            const template = document.getElementById(templateId);
+            if (template) {
+                app.innerHTML = '';
+                app.appendChild(template.content.cloneNode(true));
+
+                // If specific section requested, scroll to it
+                if (path.startsWith('#')) {
+                    const el = document.getElementById(path.substring(1));
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            // Auth Page Setup
+            if (path === '/login' || path === '/signup') {
+                const title = document.getElementById('auth-title');
+                if (title) title.innerText = path === '/login' ? 'Sign in to your account' : 'Create an account';
+
+                // Attach form handler
+                const form = document.querySelector('form');
+                if (form) {
+                    form.onsubmit = async (e) => {
+                        e.preventDefault();
+                        const email = form.email.value;
+                        const password = form.password.value;
+
+                        try {
+                            if (path === '/login') {
+                                await App.login(email, password);
+                            } else {
+                                await App.signup(email, password, 'User', ''); // Simplified
+                                alert('Check your email to confirm sign up!');
+                            }
+                        } catch (err) {
+                            alert(err.message);
+                        }
+                    };
+                }
+            }
+        }
+
+        // Handle Back/Forward
+        window.onpopstate = () => router(window.location.pathname);
+
+        // Initial Load
+        document.addEventListener('DOMContentLoaded', () => {
+            router(window.location.pathname === '/frontend/pages/Landing%20Page.html' ? '/' : window.location.pathname);
+        });
+    </script>
+
+    <!-- FOOTER (Global) -->
+    <footer class="bg-slate-50 border-t border-slate-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-slate-900 rounded text-white flex items-center justify-center">
+                            <span class="iconify" data-icon="lucide:scan-eye" data-width="14"></span>
+                        </div>
+                        <span class="font-semibold tracking-tight text-slate-900">UX Audit</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Automated, professional UX &amp; UI auditing for modern product teams and agencies.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="Pricing.html" class="hover:text-slate-900">Pricing</a></li>
+                        <li><a href="#" onclick="router('#features')" class="hover:text-slate-900">Features</a></li>
+                        <li><a href="Dashboard_Homepage.html" class="hover:text-slate-900">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-slate-900">About</a></li>
+                        <li><a href="#" class="hover:text-slate-900">Contact</a></li>
+                        <li><a href="#" class="hover:text-slate-900">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-slate-900">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-slate-900">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-400">© 2023 UX Audit Platform. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <span class="iconify text-slate-400 hover:text-slate-600 cursor-pointer" data-icon="lucide:twitter"
+                        data-width="16"></span>
+                    <span class="iconify text-slate-400 hover:text-slate-600 cursor-pointer" data-icon="lucide:github"
+                        data-width="16"></span>
+                    <span class="iconify text-slate-400 hover:text-slate-600 cursor-pointer" data-icon="lucide:linkedin"
+                        data-width="16"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TEMPLATES (Hidden, cloned by JS) -->
+
+    <!-- 1. LANDING PAGE -->
+    <template id="tpl-landing">
+        <!-- Hero -->
+        <section class="relative overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-28">
+            <div
+                class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-100 via-white to-white opacity-70">
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div
+                    class="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 mb-8 shadow-sm">
+                    <span class="flex h-2 w-2 rounded-full bg-blue-500 mr-2"></span>
+                    Now with AI-powered accessibility scoring
+                </div>
+                <h1 class="mx-auto max-w-4xl text-5xl md:text-6xl font-semibold tracking-tight text-slate-900 mb-6">
+                    Automated UX insights for<br class="hidden md:block">
+                    <span class="text-slate-400">better digital products.</span>
+                </h1>
+                <p class="mx-auto max-w-2xl text-lg text-slate-600 mb-10 leading-relaxed">
+                    Identify usability gaps, design inconsistencies, and accessibility issues in seconds. Get
+                    actionable, data-driven reports to improve your product.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="Create New Audit.html"
+                        class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white text-base font-medium px-8 py-3 rounded-md shadow-lg shadow-slate-200 transition-all flex items-center justify-center gap-2">
+                        Run a UX Audit
+                        <span class="iconify" data-icon="lucide:zap" data-width="18" data-stroke-width="1.5"></span>
+                    </a>
+                    <a href="Dashboard_Homepage.html"
+                        class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-base font-medium px-8 py-3 rounded-md shadow-sm transition-all flex items-center justify-center gap-2">
+                        View Sample Report
+                    </a>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="mt-16 relative mx-auto max-w-5xl">
+                    <div
+                        class="rounded-xl bg-slate-900/5 p-2 ring-1 ring-inset ring-slate-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                        <div class="bg-white rounded-lg shadow-2xl border border-slate-200 overflow-hidden">
+                            <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-slate-50/50">
+                                <div class="flex gap-1.5">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                </div>
+                                <div class="ml-4 h-2 w-32 bg-slate-200 rounded-full"></div>
+                            </div>
+                            <!-- Mock UI Dashboard -->
+                            <div class="p-8 grid grid-cols-3 gap-6">
+                                <div class="col-span-2 space-y-4">
+                                    <div class="h-8 w-1/3 bg-slate-100 rounded"></div>
+                                    <div class="h-32 w-full bg-slate-50 rounded border border-slate-100"></div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="h-24 bg-slate-50 rounded border border-slate-100"></div>
+                                        <div class="h-24 bg-slate-50 rounded border border-slate-100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-span-1 bg-slate-50 rounded border border-slate-100 p-4 space-y-3">
+                                    <div class="h-4 w-1/2 bg-slate-200 rounded"></div>
+                                    <div class="h-2 w-full bg-slate-200 rounded"></div>
+                                    <div class="h-2 w-3/4 bg-slate-200 rounded"></div>
+                                    <div class="mt-4 flex items-center gap-2">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                                            <span class="iconify" data-icon="lucide:alert-circle"
+                                                data-width="16"></span>
+                                        </div>
+                                        <div class="text-xs text-slate-600">Contrast Issue Detected</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works -->
+        <section id="how-it-works" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-semibold tracking-tight text-slate-900 mb-4">How UX Audit works</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto">From URL to actionable report in minutes. Our automated
+                        engine does the heavy lifting.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 relative">
+                    <!-- Connector Line (Desktop) -->
+                    <div class="hidden md:block absolute top-12 left-0 w-full h-px bg-slate-100 z-0"></div>
+
+                    <!-- Step 1 -->
+                    <div
+                        class="relative z-10 bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-10 h-10 bg-slate-900 text-white rounded-lg flex items-center justify-center text-sm font-semibold mb-6">
+                            1</div>
+                        <h3 class="text-lg font-semibold mb-2">Input URL</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Enter the website you want to analyze. Our
+                            crawler maps out key pages automatically.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div
+                        class="relative z-10 bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-10 h-10 bg-white border border-slate-200 text-slate-900 rounded-lg flex items-center justify-center text-sm font-semibold mb-6">
+                            2</div>
+                        <h3 class="text-lg font-semibold mb-2">AI Analysis</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">The engine scans for 50+ UX heuristics,
+                            accessibility violations, and visual bugs.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div
+                        class="relative z-10 bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-10 h-10 bg-white border border-slate-200 text-slate-900 rounded-lg flex items-center justify-center text-sm font-semibold mb-6">
+                            3</div>
+                        <h3 class="text-lg font-semibold mb-2">Get Report</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Download a comprehensive PDF with scored
+                            insights and visual evidence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits & Features -->
+        <section id="features" class="py-24 bg-slate-50 border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 mb-6">Why designers and teams
+                            choose UX Audit</h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="mt-1">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                                        <span class="iconify" data-icon="lucide:clock" data-width="18"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-slate-900">Save hours of manual review</h4>
+                                    <p class="text-sm text-slate-500 mt-1">Stop taking screenshots manually. Let the
+                                        tool capture and annotate issues for you.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="mt-1">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                                        <span class="iconify" data-icon="lucide:check-circle" data-width="18"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-slate-900">Objective scoring</h4>
+                                    <p class="text-sm text-slate-500 mt-1">Move beyond opinions. Use our standardized UX
+                                        scoring system to validate design decisions.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="mt-1">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+                                        <span class="iconify" data-icon="lucide:file-text" data-width="18"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-slate-900">Agency-ready reports</h4>
+                                    <p class="text-sm text-slate-500 mt-1">White-label PDF exports that look like they
+                                        took days to design, ready for your clients.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Feature Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="iconify text-slate-400 mb-4" data-icon="lucide:layers" data-width="24"></span>
+                            <h3 class="font-medium mb-1">Visual Hierarchy</h3>
+                            <p class="text-xs text-slate-500">Analysis of layout and spacing.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="iconify text-slate-400 mb-4" data-icon="lucide:accessibility"
+                                data-width="24"></span>
+                            <h3 class="font-medium mb-1">Accessibility</h3>
+                            <p class="text-xs text-slate-500">WCAG compliance checks.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="iconify text-slate-400 mb-4" data-icon="lucide:type" data-width="24"></span>
+                            <h3 class="font-medium mb-1">Typography</h3>
+                            <p class="text-xs text-slate-500">Readability and scale analysis.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="iconify text-slate-400 mb-4" data-icon="lucide:mouse-pointer-2"
+                                data-width="24"></span>
+                            <h3 class="font-medium mb-1">Interaction</h3>
+                            <p class="text-xs text-slate-500">Broken links and hit areas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-semibold tracking-tight text-slate-900 mb-6">Ready to optimize your user
+                    experience?</h2>
+                <div class="flex justify-center gap-4">
+                    <button onclick="router('/dashboard/new')"
+                        class="bg-slate-900 hover:bg-slate-800 text-white font-medium px-6 py-3 rounded-md shadow-lg transition-all">Start
+                        Your First UX Audit</button>
+                    <button onclick="router('/dashboard')"
+                        class="bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 font-medium px-6 py-3 rounded-md transition-all">Go
+                        to Dashboard</button>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- 2. PRICING PAGE -->
+    <template id="tpl-pricing">
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">Simple,
+                        transparent pricing</h2>
+                    <p class="text-slate-500">Choose the plan that fits your workflow. Cancel anytime.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Free -->
+                    <div
+                        class="border border-slate-200 rounded-2xl p-8 flex flex-col hover:border-slate-300 transition-colors">
+                        <div class="mb-4">
+                            <h3 class="text-lg font-medium text-slate-900">Free</h3>
+                            <p class="text-sm text-slate-500">Explore UX Audit</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold tracking-tight">$0</span>
+                            <span class="text-slate-500 text-sm">/month</span>
+                        </div>
+                        <button onclick="router('/signup')"
+                            class="w-full bg-slate-50 hover:bg-slate-100 text-slate-900 font-medium py-2 rounded-md border border-slate-200 transition-colors mb-8 text-sm">Get
+                            Started Free</button>
+                        <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                            <li class="flex gap-2"><span class="iconify text-slate-400" data-icon="lucide:check"></span>
+                                1 website audit/mo</li>
+                            <li class="flex gap-2"><span class="iconify text-slate-400" data-icon="lucide:check"></span>
+                                Up to 3 pages</li>
+                            <li class="flex gap-2"><span class="iconify text-slate-400" data-icon="lucide:check"></span>
+                                Basic UX issues</li>
+                            <li class="flex gap-2"><span class="iconify text-slate-400" data-icon="lucide:check"></span>
+                                Web-only results</li>
+                        </ul>
+                    </div>
+
+                    <!-- Starter -->
+                    <div
+                        class="border border-slate-200 rounded-2xl p-8 flex flex-col hover:border-slate-300 transition-colors relative">
+                        <div class="mb-4">
+                            <h3 class="text-lg font-medium text-slate-900">Starter</h3>
+                            <p class="text-sm text-slate-500">For Individuals</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold tracking-tight">$10</span>
+                            <span class="text-slate-500 text-sm">/month</span>
+                        </div>
+                        <button onclick="router('/signup')"
+                            class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-2 rounded-md transition-colors mb-8 text-sm">Start
+                            Auditing</button>
+                        <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                            <li class="flex gap-2"><span class="iconify text-slate-900" data-icon="lucide:check"></span>
+                                10 audits/mo</li>
+                            <li class="flex gap-2"><span class="iconify text-slate-900" data-icon="lucide:check"></span>
+                                Up to 25 pages/audit</li>
+                            <li class="flex gap-2"><span class="iconify text-slate-900" data-icon="lucide:check"></span>
+                                Full UX &amp; UI analysis</li>
+                            <li class="flex gap-2"><span class="iconify text-slate-900" data-icon="lucide:check"></span>
+                                Annotated screenshots</li>
+                            <li class="flex gap-2"><span class="iconify text-slate-900" data-icon="lucide:check"></span>
+                                PDF Download</li>
+                        </ul>
+                    </div>
+
+                    <!-- Professional -->
+                    <div
+                        class="border border-slate-200 rounded-2xl p-8 flex flex-col shadow-lg ring-1 ring-black/5 relative bg-slate-50/50">
+                        <div
+                            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-medium px-3 py-1 rounded-full">
+                            Most Popular</div>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-medium text-slate-900">Professional</h3>
+                            <p class="text-sm text-slate-500">For Agencies &amp; Teams</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold tracking-tight">$29</span>
+                            <span class="text-slate-500 text-sm">/month</span>
+                        </div>
+                        <button onclick="router('/signup')"
+                            class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-2 rounded-md transition-colors mb-8 text-sm shadow-md">Power
+                            Your UX Workflow</button>
+                        <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                            <li class="flex gap-2"><span class="iconify text-emerald-600"
+                                    data-icon="lucide:check"></span> 30 audits/mo</li>
+                            <li class="flex gap-2"><span class="iconify text-emerald-600"
+                                    data-icon="lucide:check"></span> Up to 100 pages/audit</li>
+                            <li class="flex gap-2"><span class="iconify text-emerald-600"
+                                    data-icon="lucide:check"></span> Advanced Analysis &amp; Recommendations</li>
+                            <li class="flex gap-2"><span class="iconify text-emerald-600"
+                                    data-icon="lucide:check"></span> White-label Reports</li>
+                            <li class="flex gap-2"><span class="iconify text-emerald-600"
+                                    data-icon="lucide:check"></span> Priority Support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <p class="text-sm text-slate-500">Need higher volumes or custom workflows? <a href="#"
+                            class="text-slate-900 underline underline-offset-2">Contact us</a> for agency solutions.</p>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- 3. AUTH PAGES -->
+    <template id="tpl-auth">
+        <div class="min-h-[calc(100vh-4rem)] flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50">
+            <div class="sm:mx-auto sm:w-full sm:max-w-md">
+                <div class="flex justify-center mb-6">
+                    <div class="w-10 h-10 bg-slate-900 rounded text-white flex items-center justify-center">
+                        <span class="iconify" data-icon="lucide:scan-eye" data-width="20"></span>
+                    </div>
+                </div>
+                <h2 id="auth-title" class="text-center text-2xl font-semibold tracking-tight text-slate-900">Sign in to
+                    your account</h2>
+            </div>
+
+            <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+                <div class="bg-white py-8 px-4 shadow-sm sm:rounded-lg sm:px-10 border border-slate-200">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); router('/dashboard');">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700">Email address</label>
+                            <div class="mt-1">
+                                <input id="email" name="email" type="email" required=""
+                                    class="appearance-none block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:ring-slate-900 focus:border-slate-900 sm:text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
+                            <div class="mt-1">
+                                <input id="password" name="password" type="password" required=""
+                                    class="appearance-none block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:ring-slate-900 focus:border-slate-900 sm:text-sm">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="remember-me" name="remember-me" type="checkbox"
+                                    class="h-4 w-4 text-slate-900 focus:ring-slate-900 border-slate-300 rounded">
+                                <label for="remember-me" class="ml-2 block text-sm text-slate-900">Remember me</label>
+                            </div>
+
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-slate-600 hover:text-slate-900">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900 transition-colors">
+                                Sign in
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-slate-500">Don't have an account? <a href="#" onclick="router('/signup')"
+                                class="font-medium text-slate-900 hover:underline">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- 4. DASHBOARD WRAPPER -->
+    <template id="tpl-dashboard">
+        <div class="bg-slate-50 min-h-screen pb-12">
+            <!-- Dashboard Nav -->
+            <div class="bg-white border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex space-x-8 -mb-px">
+                        <a href="#" onclick="router('/dashboard')"
+                            class="border-b-2 border-slate-900 py-4 px-1 text-sm font-medium text-slate-900">Overview</a>
+                        <a href="#" onclick="router('/dashboard/reports')"
+                            class="border-b-2 border-transparent hover:border-slate-300 py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 transition-colors">Reports</a>
+                        <a href="#" onclick="router('/settings')"
+                            class="border-b-2 border-transparent hover:border-slate-300 py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 transition-colors">Settings</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content Injection -->
+            <div id="dashboard-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Inner content varies -->
+            </div>
+        </div>
+    </template>
+
+    <!-- 5. DASHBOARD: OVERVIEW -->
+    <template id="tpl-dash-overview">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-semibold tracking-tight text-slate-900">Dashboard</h1>
+            <button onclick="router('/dashboard/new')"
+                class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-4 py-2 rounded-md shadow-sm transition-all flex items-center gap-2">
+                <span class="iconify" data-icon="lucide:plus" data-width="16"></span>
+                Run New Audit
+            </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-sm font-medium text-slate-500 mb-1">Total Audits</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 class="text-2xl font-semibold text-slate-900">24</h3>
+                    <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">+4 this
+                        month</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-sm font-medium text-slate-500 mb-1">Avg. UX Score</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 class="text-2xl font-semibold text-slate-900">72<span
+                            class="text-slate-400 text-sm font-normal">/100</span></h3>
+                    <span class="text-xs font-medium text-slate-500">stable</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-sm font-medium text-slate-500 mb-1">Issues Found</p>
+                <div class="flex items-baseline gap-2">
+                    <h3 class="text-2xl font-semibold text-slate-900">142</h3>
+                    <span class="text-xs font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">12 critical</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Table -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-200">
+                <h3 class="text-base font-semibold text-slate-900">Recent Audits</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Website</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Status</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Pages</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Score</th>
+                            <th scope="col" class="relative px-6 py-3"><span class="sr-only">View</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50 transition-colors cursor-pointer"
+                            onclick="router('/dashboard/audit/1')">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">acmecorp.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm"><span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Completed</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">24</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-900">78</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-slate-600"><span
+                                    class="iconify" data-icon="lucide:chevron-right"></span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors cursor-pointer"
+                            onclick="router('/dashboard/audit/2')">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">shop-demo.io</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm"><span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Completed</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">12</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-900">64</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-slate-600"><span
+                                    class="iconify" data-icon="lucide:chevron-right"></span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">startup.inc</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm"><span
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Processing</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-400">...</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium text-slate-600"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- 6. NEW AUDIT -->
+    <template id="tpl-new-audit">
+        <div class="max-w-2xl mx-auto">
+            <a href="#" onclick="router('/dashboard')"
+                class="flex items-center text-sm text-slate-500 hover:text-slate-900 mb-6">
+                <span class="iconify mr-1" data-icon="lucide:arrow-left" data-width="16"></span> Back to dashboard
+            </a>
+
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8" id="audit-form-container">
+                <h1 class="text-2xl font-semibold tracking-tight text-slate-900 mb-2">New Audit</h1>
+                <p class="text-sm text-slate-500 mb-8">Enter a website URL to begin the automated analysis.</p>
+
+                <form onsubmit="startAuditSimulation(event)">
+                    <div class="mb-6">
+                        <label for="url" class="block text-sm font-medium text-slate-700 mb-2">Website URL</label>
+                        <div class="flex rounded-md shadow-sm">
+                            <span
+                                class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-slate-300 bg-slate-50 text-slate-500 text-sm">https://</span>
+                            <input type="text" name="url" id="url" required=""
+                                class="flex-1 min-w-0 block w-full px-3 py-3 rounded-none rounded-r-md border border-slate-300 focus:ring-slate-900 focus:border-slate-900 sm:text-sm placeholder-slate-400"
+                                placeholder="www.example.com">
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 flex items-start gap-3">
+                        <span class="iconify text-blue-600 mt-0.5" data-icon="lucide:info" data-width="18"></span>
+                        <div class="text-sm text-blue-800">
+                            <span class="font-medium">Starter Plan Limit:</span> You have 8 audits remaining this month.
+                            This scan will analyze up to 25 pages.
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 rounded-md transition-all shadow-sm">Start
+                        Audit</button>
+                </form>
+            </div>
+
+            <!-- Loading State (Hidden initially) -->
+            <div id="audit-loader"
+                class="hidden bg-white rounded-xl border border-slate-200 shadow-sm p-12 text-center">
+                <div class="relative w-16 h-16 mx-auto mb-6">
+                    <div class="absolute inset-0 border-4 border-slate-100 rounded-full"></div>
+                    <div
+                        class="absolute inset-0 border-4 border-slate-900 rounded-full border-t-transparent animate-spin">
+                    </div>
+                    <span class="absolute inset-0 flex items-center justify-center">
+                        <span class="iconify text-slate-900" data-icon="lucide:scan-eye"></span>
+                    </span>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">Analyzing Website...</h3>
+                <p id="loader-text" class="text-sm text-slate-500 mb-6">Crawling pages and taking screenshots</p>
+
+                <div class="w-full bg-slate-100 rounded-full h-2 mb-2 overflow-hidden">
+                    <div id="progress-bar" class="bg-slate-900 h-2 rounded-full loader-bar"></div>
+                </div>
+                <p class="text-xs text-slate-400">This may take up to a minute.</p>
+            </div>
+        </div>
+    </template>
+
+    <!-- 7. AUDIT RESULTS -->
+    <template id="tpl-audit-results">
+        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <a href="#" onclick="router('/dashboard')"
+                    class="flex items-center text-sm text-slate-500 hover:text-slate-900 mb-2">
+                    <span class="iconify mr-1" data-icon="lucide:arrow-left" data-width="16"></span> Back to dashboard
+                </a>
+                <h1 class="text-2xl font-semibold tracking-tight text-slate-900 flex items-center gap-2">
+                    acmecorp.com
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded-full font-medium">Audit
+                        Complete</span>
+                </h1>
+                <p class="text-xs text-slate-400 mt-1">Scanned on Oct 24, 2023 • 24 Pages analyzed</p>
+            </div>
+            <div class="flex gap-3">
+                <button
+                    class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-medium px-4 py-2 rounded-md transition-colors flex items-center gap-2">
+                    <span class="iconify" data-icon="lucide:share-2" data-width="14"></span> Share
+                </button>
+                <button
+                    class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-4 py-2 rounded-md shadow-sm transition-colors flex items-center gap-2">
+                    <span class="iconify" data-icon="lucide:download" data-width="14"></span> Download Report
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left: Score -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Main Score -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 text-center">
+                    <h3 class="text-sm font-medium text-slate-500 mb-4">Overall UX Score</h3>
+                    <div class="relative w-40 h-40 mx-auto flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="80" cy="80" r="70" stroke="currentColor" stroke-width="12" fill="transparent"
+                                class="text-slate-100"></circle>
+                            <circle cx="80" cy="80" r="70" stroke="currentColor" stroke-width="12" fill="transparent"
+                                stroke-dasharray="440" stroke-dashoffset="100" class="text-slate-900"></circle>
+                        </svg>
+                        <span class="absolute text-4xl font-bold text-slate-900">78</span>
+                    </div>
+                    <div class="mt-4 text-sm text-slate-500">Good start, but room for improvement.</div>
+                </div>
+
+                <!-- Breakdown -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <h3 class="text-sm font-medium text-slate-900 mb-4">Score Breakdown</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-600">Usability</span>
+                                <span class="font-medium text-slate-900">82/100</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-1.5">
+                                <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-600">Accessibility</span>
+                                <span class="font-medium text-slate-900">65/100</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-1.5">
+                                <div class="bg-yellow-500 h-1.5 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-600">Performance</span>
+                                <span class="font-medium text-slate-900">90/100</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-1.5">
+                                <div class="bg-emerald-600 h-1.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-slate-600">Content Clarity</span>
+                                <span class="font-medium text-slate-900">74/100</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-1.5">
+                                <div class="bg-slate-900 h-1.5 rounded-full" style="width: 74%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Issues & Screenshots -->
+            <div class="lg:col-span-2 space-y-6">
+
+                <!-- Priority Issues -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                        <h3 class="font-semibold text-slate-900">Priority Issues</h3>
+                        <span class="bg-red-100 text-red-700 text-xs font-medium px-2 py-0.5 rounded">3 High
+                            Severity</span>
+                    </div>
+                    <div class="divide-y divide-slate-100">
+                        <div class="p-6 hover:bg-slate-50 transition-colors group cursor-pointer">
+                            <div class="flex gap-4">
+                                <div class="mt-1 flex-shrink-0">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center">
+                                        <span class="iconify" data-icon="lucide:alert-triangle" data-width="16"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-sm font-medium text-slate-900 group-hover:text-blue-600 transition-colors">
+                                        Low Contrast on Call-to-Action</h4>
+                                    <p class="text-sm text-slate-500 mt-1">The primary button color (#E2E8F0) on white
+                                        background fails WCAG AA standards. Ratio: 2.1:1.</p>
+                                    <div class="mt-3">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-600">Accessibility</span>
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-600 ml-2">Homepage</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 hover:bg-slate-50 transition-colors group cursor-pointer">
+                            <div class="flex gap-4">
+                                <div class="mt-1 flex-shrink-0">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center">
+                                        <span class="iconify" data-icon="lucide:mouse-pointer-click"
+                                            data-width="16"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-sm font-medium text-slate-900 group-hover:text-blue-600 transition-colors">
+                                        Clickable Elements Too Close</h4>
+                                    <p class="text-sm text-slate-500 mt-1">Mobile navigation links have insufficient
+                                        padding, causing potential misclicks.</p>
+                                    <div class="mt-3">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-600">Usability</span>
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-600 ml-2">Mobile</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 text-center">
+                        <button class="text-sm font-medium text-slate-900 hover:text-slate-700">View All 14
+                            Issues</button>
+                    </div>
+                </div>
+
+                <!-- Screenshot Gallery Preview -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <h3 class="font-semibold text-slate-900 mb-4">Visual Evidence</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="aspect-video bg-slate-100 rounded-lg border border-slate-200 relative group overflow-hidden cursor-pointer">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/5 transition-colors">
+                                <div
+                                    class="w-24 h-12 bg-white/80 rounded shadow-sm text-xs flex items-center justify-center border border-slate-200">
+                                    Home - Hero
+                                </div>
+                            </div>
+                            <!-- Simulated Annotation -->
+                            <div
+                                class="absolute top-1/4 right-1/4 w-6 h-6 rounded-full border-2 border-red-500 bg-red-500/20 animate-pulse-fast">
+                            </div>
+                        </div>
+                        <div
+                            class="aspect-video bg-slate-100 rounded-lg border border-slate-200 relative group overflow-hidden cursor-pointer">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/5 transition-colors">
+                                <div
+                                    class="w-24 h-12 bg-white/80 rounded shadow-sm text-xs flex items-center justify-center border border-slate-200">
+                                    Pricing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </template>
+
+    <!-- 8. SETTINGS -->
+    <template id="tpl-settings">
+        <h1 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">Account Settings</h1>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm divide-y divide-slate-200">
+            <div class="p-6">
+                <h3 class="text-base font-medium text-slate-900">Profile Information</h3>
+                <p class="text-sm text-slate-500 mb-4">Update your account details and email.</p>
+                <div class="grid max-w-2xl gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                        <input type="text" value="Jane Doe"
+                            class="block w-full rounded-md border-slate-300 shadow-sm focus:border-slate-900 focus:ring-slate-900 sm:text-sm px-3 py-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                        <input type="email" value="jane@designagency.com"
+                            class="block w-full rounded-md border-slate-300 shadow-sm focus:border-slate-900 focus:ring-slate-900 sm:text-sm px-3 py-2 border">
+                    </div>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-base font-medium text-slate-900">Subscription Plan</h3>
+                        <p class="text-sm text-slate-500 mt-1">You are currently on the <span
+                                class="font-semibold text-slate-900">Starter Plan</span>.</p>
+                    </div>
+                    <button onclick="router('/pricing')"
+                        class="text-sm font-medium text-slate-900 border border-slate-300 rounded-md px-4 py-2 hover:bg-slate-50 transition-colors">Upgrade
+                        Plan</button>
+                </div>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-b-xl flex justify-between items-center">
+                <button class="text-sm text-red-600 font-medium hover:text-red-700">Delete Account</button>
+                <button onclick="router('/')" class="text-sm font-medium text-slate-900 hover:text-slate-700">Log
+                    out</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- JAVASCRIPT LOGIC -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+// frontend/assets/js/app.js
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+// Initialize Supabase
+const SUPABASE_URL = "https://mlmstxyixynfsbolgnxu.supabase.co";
+// WARNING: Using Service Key for demo purposes. In production, use the Anon Key.
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sbXN0eHlpeHluZnNib2xnbnh1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2ODIzMjk4NSwiZXhwIjoyMDgzODA4OTg1fQ.vi2gPU4mscqOOedCPKEorCXjSHjpxTVkZo_4Ke06XRg";
+
+// Create single instance
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const App = {
+    // Auth State
+    user: null,
+    supabase: supabase, // Expose if needed
+
+    init: async () => {
+        // Check active session
+        const { data: { session } } = await supabase.auth.getSession();
+        App.user = session?.user || null;
+
+        // Listen for auth changes
+        supabase.auth.onAuthStateChange((event, session) => {
+            App.user = session?.user || null;
+            console.log("Auth Event:", event, App.user);
+
+            if (event === 'SIGNED_IN') {
+                // If on login page, redirect to dashboard
+                // Only redirect if explicitly on an auth page to avoid redirect loops
+                const isAuthPage = ['Login.html', 'Signup.html', 'ResetPassword.html'].some(p => window.location.pathname.includes(p));
+                if (isAuthPage) {
+                    window.location.href = 'Dashboard_Homepage.html';
+                }
+            }
+            if (event === 'SIGNED_OUT') {
+                // Only redirect if NOT on an auth page already
+                const isAuthPage = ['Login.html', 'Signup.html', 'ResetPassword.html', 'Landing Page.html'].some(p => window.location.pathname.includes(p));
+                if (!isAuthPage) {
+                    window.location.href = 'Landing Page.html';
+                }
+            }
+        });
+    },
+
+    // Auth Actions
+    login: async (email, password) => {
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        return data;
+    },
+
+    signup: async (email, password, firstName, lastName) => {
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: { first_name: firstName, last_name: lastName }
+            }
+        });
+        if (error) throw error;
+        return data;
+    },
+
+    resetPassword: async (email) => {
+        const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/frontend/pages/ResetPassword.html'
+        });
+        if (error) throw error;
+        return data;
+    },
+
+    logout: async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+        window.location.href = 'Landing Page.html';
+    },
+
+    // API Helper
+    api: {
+        baseUrl: 'http://localhost:4000/api',
+
+        async getAuthHeaders() {
+            const { data } = await supabase.auth.getSession();
+            const token = data?.session?.access_token;
+            return {
+                'Content-Type': 'application/json',
+                ...(token && { Authorization: `Bearer ${token}` })
+            };
+        },
+
+        async get(endpoint) {
+            const headers = await this.getAuthHeaders();
+            const res = await fetch(`${this.baseUrl}${endpoint}`, { headers });
+            if (!res.ok) throw new Error(`API Error: ${res.statusText}`);
+            return res.json();
+        },
+
+        async post(endpoint, body) {
+            const headers = await this.getAuthHeaders();
+            const res = await fetch(`${this.baseUrl}${endpoint}`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(body)
+            });
+            if (!res.ok) throw new Error(`API Error: ${res.statusText}`);
+            return res.json();
+        }
+    },
+
+    // Domain Helpers
+    audits: {
+        async getAll() {
+            return await App.api.get('/audits');
+        },
+
+        async get(id) {
+            return await App.api.get(`/audits/${id}`);
+        },
+
+        async getResults(id) {
+            return await App.api.get(`/audits/${id}/results`);
+        },
+
+        async create(url) {
+            return await App.api.post('/audits', { url });
+        },
+
+        // Client-side stats calculation to centralize logic
+        calculateStats(audits) {
+            const total = audits.length;
+            const completed = audits.filter(a => a.status === 'completed').length;
+            const active = total - completed;
+
+            // Score calculation
+            const scoredAudits = audits.filter(a => a.score > 0);
+            const avgScore = scoredAudits.length > 0
+                ? Math.round(scoredAudits.reduce((acc, a) => acc + a.score, 0) / scoredAudits.length)
+                : 0;
+
+            // Simple storage estimate (mock)
+            const storageUsed = Math.round(total * 5.2);
+
+            // Monthly stats
+            const now = new Date();
+            const thisMonthCount = audits.filter(a => {
+                const d = new Date(a.created_at);
+                return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+            }).length;
+
+            return { total, completed, active, avgScore, storageUsed, thisMonthCount };
+        }
+    },
+
+    // Guard Clause for Protected Pages
+    requireAuth: async () => {
+        // Wait for init if not ready
+        if (!App.user) {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                // If not on an auth page, redirect
+                const isAuthPage = ['Login.html', 'Signup.html', 'ResetPassword.html'].some(p => window.location.pathname.includes(p));
+                if (!isAuthPage) {
+                    window.location.href = 'Login.html';
+                }
+                throw new Error("Unauthorized");
+            }
+            App.user = session.user;
+        }
+    },
+
+    // UI Helpers
+    toast: (type, message) => {
+        // Create container if not exists
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none';
+            document.body.appendChild(container);
+        }
+
+        // Create Toast
+        const el = document.createElement('div');
+        el.className = 'animate-[slideUp_0.3s_ease-out] pointer-events-auto bg-slate-900 text-white px-4 py-3 rounded-lg shadow-lg shadow-slate-300 flex items-center gap-3 border border-slate-800 min-w-[300px]';
+
+        let icon = 'info';
+        let colorClass = 'bg-blue-500';
+
+        if (type === 'success') {
+            icon = 'check';
+            colorClass = 'bg-emerald-500';
+        } else if (type === 'error') {
+            icon = 'alert-triangle';
+            colorClass = 'bg-red-500';
+        }
+
+        el.innerHTML = `
+            <div class="w-5 h-5 rounded-full ${colorClass} flex items-center justify-center text-slate-950 flex-shrink-0">
+                <span class="iconify" data-icon="lucide:${icon}" data-width="12" data-stroke-width="3"></span>
+            </div>
+            <div class="flex-1">
+                <p class="text-xs font-medium">${message}</p>
+            </div>
+            <button class="ml-2 text-slate-400 hover:text-white transition-colors" onclick="this.parentElement.remove()">
+                <span class="iconify" data-icon="lucide:x" data-width="14"></span>
+            </button>
+        `;
+
+        container.appendChild(el);
+
+        // Refresh icons
+        if (window.Iconify) window.Iconify.scan(el);
+
+        // Auto remove
+        setTimeout(() => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(10px)';
+            el.style.transition = 'all 0.3s ease-out';
+            setTimeout(() => el.remove(), 300);
+        }, 5000);
+    }
+};
+
+// Global Exposure (for backward compat with inline scripts if any remain)
+window.App = App;
+window.supabase = supabase; // Explicitly expose supabase if needed by older scripts (though we aim to remove)
+
+// Auto-init
+App.init();
+
+export default App; // Compatibility

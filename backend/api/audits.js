@@ -1,0 +1,142 @@
+import express from "express";
+import { createProject } from "../db/createProject.js";
+import { runScraper } from "../scraper/scraper.js";
+import { supabase } from "../db/supabase.js";
+import { generateReport } from "../reports/generateReport.js";
+import { checkUsage } from "../utils/usage.js";
+
+const router = express.Router();
+
+// Helper: Extract user from request
+async function getUserFromRequest(req) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return null;
+
+    const token = authHeader.replace('Bearer ', '');
+    const { data, error } = await supabase.auth.getUser(token);
+
+    if (error) return null;
+    return data.user;
+}
+
+// POST /api/audits - Start an audit
+router.post("/", async (req, res) => {
+    try {
+        const user = await getUserFromRequest(req);
+        if (!user) return res.status(401).json({ error: 'Unauthorized' });
+
+        const { url } = req.body;
+        if (!url) {
+            return res.status(400).json({ error: "URL is required" });
+        }
+
+        // --- USAGE CHECK ---
+        const usage = await checkUsage(user.id);
+        if (!usage.allowed) {
+            return res.status(403).json({
+                error: "Limit Exceeded",
+                message: usage.reason
+            });
+        }
+
+        console.log(`User ${user.id} (${usage.plan}) starting audit. Page limit: ${usage.pageLimit}`);
+
+        // 1. Create project immediately associated with user
+        const project = await createProject(url, user.id);
+
+        // 2. Start (async) scrape with Page Limit
+        runScraper(url, project.id, usage.pageLimit).catch(err => console.error("Background audit error:", err));
+
+        return res.status(201).json({
+            message: "Audit started",
+            auditId: project.id
+        });
+
+    } catch (error) {
+        console.error("Error starting audit:", error);
+        return res.status(500).json({ error: "Failed to start audit", details: error.message });
+    }
+});
+
+// GET /api/audits - Get all audits for user
+router.get("/", async (req, res) => {
+    try {
+        const user = await getUserFromRequest(req);
+        if (!user) return res.status(401).json({ error: 'Unauthorized' });
+
+        const { data, error } = await supabase
+            .from('projects')
+            .select('*')
+            .eq('user_id', user.id)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        res.json(data);
+    } catch (error) {
+        console.error("Error fetching audits:", error);
+        res.status(500).json({ error: "Failed to fetch audits" });
+    }
+});
+
+// GET /api/audits/:id - Get status
+router.get("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { data: project, error } = await supabase
+            .from('projects')
+            .select('*, pages(count)')
+            .eq('id', id)
+            .single();
+
+        if (error) throw error;
+
+        res.json({
+            ...project,
+            pages_scanned: project.pages?.[0]?.count || 0
+        });
+    } catch (error) {
+        console.error("Error fetching audit:", error);
+        res.status(404).json({ error: "Audit not found" });
+    }
+});
+
+// GET /api/audits/:id/results - Get detailed results
+router.get("/:id/results", async (req, res) => {
+    try {
+        const { id } = req.params;
+        // Fetch pages with their analysis
+        const { data: pages, error } = await supabase
+            .from('pages')
+            .select('*, analysis(*)') // Using 'analysis' relation if set up, or check actual table name
+            .eq('project_id', id);
+
+        // Fallback if 'analysis' relation helper doesn't exist, we might need manual join
+        // But assuming supabase generic works if foreign keys exist.
+
+        if (error) throw error;
+
+        res.json({ pages });
+    } catch (error) {
+        console.error("Error fetching results:", error);
+        res.status(500).json({ error: "Failed to fetch results" });
+    }
+});
+
+// GET /api/audits/:id/report - Get PDF URL
+router.get("/:id/report", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Generate (or fetch existing) PDF URL
+        const pdfUrl = await generateReport(id);
+
+        res.json({ url: pdfUrl });
+
+    } catch (error) {
+        console.error("Report generation failed:", error);
+        res.status(500).json({ error: "Report generation failed" });
+    }
+});
+
+export default router;

@@ -1,0 +1,211 @@
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Init
+    await App.init();
+    await App.requireAuth();
+    await Layout.load('nav-reports'); // Highlight 'Reports' in nav
+    await Layout.loadContent('partials/result.html');
+
+    // 2. Get ID
+    const urlParams = new URLSearchParams(window.location.search);
+    const auditId = urlParams.get('id');
+
+    if (!auditId) {
+        App.toast('error', 'No Audit ID specified');
+        setTimeout(() => window.location.href = 'Reports.html', 1500);
+        return;
+    }
+
+    try {
+        // 3. Fetch Data
+        const project = await App.api.get(`/audits/${auditId}`);
+        const { pages } = await App.api.get(`/audits/${auditId}/results`);
+
+        // 4. Bind Data
+        bindProjectHeader(project);
+        renderScoreCircle(project.score);
+        renderBreakdown(project.score_breakdown);
+        renderPages(pages);
+
+        // 5. Bind Download Button
+        const btn = document.getElementById('btn-download');
+        if (project.report_url) {
+            btn.onclick = () => window.open(project.report_url, '_blank');
+        } else {
+            btn.onclick = async () => {
+                btn.disabled = true;
+                btn.innerHTML = `<span class="iconify animate-spin" data-icon="lucide:loader-2" data-width="14"></span> Generating...`;
+                try {
+                    const res = await App.api.get(`/audits/${auditId}/report`);
+                    window.open(res.url, '_blank');
+                    btn.innerHTML = `<span class="iconify" data-icon="lucide:check" data-width="14"></span> Report Ready`;
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = `<span class="iconify" data-icon="lucide:download" data-width="14"></span> Download Report`;
+                        btn.onclick = () => window.open(res.url, '_blank');
+                    }, 3000);
+                } catch (e) {
+                    console.error(e);
+                    btn.disabled = false;
+                    btn.innerHTML = 'Retry Download';
+                    App.toast('error', 'Failed to generate report');
+                }
+            };
+        }
+
+    } catch (err) {
+        console.error(err);
+        App.toast('error', 'Failed to load audit results');
+    }
+});
+
+function bindProjectHeader(project) {
+    if (!project) return;
+    const url = new URL(project.target_url || 'http://example.com');
+    document.getElementById('header-url').textContent = url.hostname;
+    document.getElementById('meta-url').textContent = project.target_url;
+    document.getElementById('meta-date').textContent = new Date(project.created_at).toLocaleDateString();
+
+    // Status
+    const statusEl = document.getElementById('header-status');
+    if (project.status === 'completed') {
+        statusEl.textContent = 'Completed';
+        statusEl.className = "px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-medium border border-emerald-100";
+    } else if (project.status === 'error') {
+        statusEl.textContent = 'Error';
+        statusEl.className = "px-2 py-0.5 rounded-full bg-red-50 text-red-700 text-[10px] font-medium border border-red-100";
+    } else {
+        statusEl.textContent = 'In Progress';
+        statusEl.className = "px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-medium border border-blue-100 animate-pulse";
+    }
+}
+
+function renderScoreCircle(score) {
+    const el = document.getElementById('overall-score');
+    if (el) el.textContent = score || '--';
+
+    const circle = document.getElementById('score-circle-overlay');
+    if (circle && score) {
+        // Circumference 2πr = 2 * 3.14159 * 40 ≈ 251.2
+        const c = 251.2;
+        const offset = c - ((score / 100) * c);
+        // Timeout to animate
+        setTimeout(() => {
+            circle.style.strokeDashoffset = offset;
+            // Color based on score
+            if (score >= 90) circle.classList.add('text-emerald-500');
+            else if (score >= 70) circle.classList.add('text-blue-500'); // blue for okay
+            else if (score >= 50) circle.classList.add('text-amber-500');
+            else circle.classList.add('text-red-500');
+        }, 100);
+    }
+}
+
+function renderBreakdown(breakdown) {
+    const container = document.getElementById('score-breakdown');
+    if (!container) return;
+
+    if (!breakdown || Object.keys(breakdown).length === 0) {
+        container.innerHTML = '<p class="text-xs text-slate-400 col-span-2">No score breakdown available.</p>';
+        return;
+    }
+
+    container.innerHTML = Object.entries(breakdown).map(([key, val]) => `
+        <div>
+            <div class="flex justify-between text-xs font-medium text-slate-700 mb-1 capitalize">
+                <span>${key}</span>
+                <span>${val}/100</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-slate-900 h-full rounded-full" style="width: ${val}%"></div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderPages(pages) {
+    const issuesContainer = document.getElementById('issues-list');
+    const screenshotsContainer = document.getElementById('screenshots-grid');
+
+    if (!issuesContainer || !screenshotsContainer) return;
+
+    if (document.getElementById('meta-pages')) {
+        document.getElementById('meta-pages').textContent = pages.length;
+    }
+
+    issuesContainer.innerHTML = '';
+    screenshotsContainer.innerHTML = '';
+
+    if (!pages || pages.length === 0) {
+        issuesContainer.innerHTML = '<div class="p-6 text-center text-sm text-slate-500">No pages found.</div>';
+        return;
+    }
+
+    pages.forEach(page => {
+        // 1. Screenshot
+        if (page.screenshot_path) {
+            const img = document.createElement('div');
+            img.className = 'group relative rounded border border-slate-200 overflow-hidden bg-slate-100 aspect-[4/3]';
+            img.innerHTML = `
+                 <img src="${page.screenshot_path}" loading="lazy" class="object-cover w-full h-full transition-transform group-hover:scale-105">
+                 <div class="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-1.5 border-t border-slate-200">
+                     <p class="text-[10px] font-medium text-slate-700 truncate text-center">${new URL(page.url).pathname}</p>
+                 </div>
+             `;
+            screenshotsContainer.appendChild(img);
+        }
+
+        // 2. Issues
+        const review = page.ai_reviews && page.ai_reviews.length > 0 ? page.ai_reviews[0] : null;
+        let analysisData = null;
+
+        if (review && review.analysis) {
+            analysisData = review.analysis;
+        } else if (review && review.result) {
+            // Backward compat if using result column
+            try { analysisData = typeof review.result === 'string' ? JSON.parse(review.result) : review.result; } catch (e) { }
+        }
+
+        if (analysisData) {
+            const issues = analysisData.issues || [];
+            issues.forEach(issue => {
+                const severity = issue.severity ? issue.severity.toLowerCase() : 'info';
+
+                // Colors
+                let badgeClass = 'bg-slate-50 text-slate-600 border-slate-100';
+                if (severity === 'critical') badgeClass = 'bg-red-50 text-red-700 border-red-100';
+                else if (severity === 'high') badgeClass = 'bg-orange-50 text-orange-700 border-orange-100';
+                else if (severity === 'medium') badgeClass = 'bg-yellow-50 text-yellow-700 border-yellow-100';
+
+                const html = `
+                <div class="p-5 hover:bg-slate-50/50 transition-colors">
+                    <div class="flex items-start gap-3">
+                         <div class="mt-0.5">
+                            <span class="flex items-center justify-center w-5 h-5 rounded-full text-slate-500 bg-slate-100 border border-slate-200">
+                                <span class="iconify" data-icon="lucide:alert-circle" data-width="12"></span>
+                            </span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+                                <h4 class="text-sm font-medium text-slate-900">${issue.title}</h4>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase border ${badgeClass}">${severity}</span>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-2">${issue.description}</p>
+                            
+                            <div class="flex gap-2">
+                                <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-100 text-[10px] text-slate-500 border border-slate-200">
+                                    <span class="iconify" data-icon="lucide:link" data-width="10"></span>
+                                    ${new URL(page.url).pathname}
+                                </span>
+                                ${issue.category ? `<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-slate-100 text-[10px] text-slate-500 border border-slate-200">${issue.category}</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+                issuesContainer.insertAdjacentHTML('beforeend', html);
+            });
+        }
+    });
+
+    // Icons
+    if (window.Iconify) window.Iconify.scan();
+}

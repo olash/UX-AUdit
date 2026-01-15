@@ -1,0 +1,1497 @@
+{
+  "buttons": [
+    {
+      "text": "Book an Appointment",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(149, 196, 78)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Patient Portal",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(68, 200, 245)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Take the tour",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(68, 200, 245)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "See More",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(6, 42, 85)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "English",
+      "styles": {
+        "fontSize": "20px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Yoruba",
+      "styles": {
+        "fontSize": "20px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Hausa",
+      "styles": {
+        "fontSize": "20px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Igbo",
+      "styles": {
+        "fontSize": "20px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Hindi",
+      "styles": {
+        "fontSize": "20px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(6, 42, 85)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "See More",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(6, 42, 85)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Find a doctor",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Explore careers",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    },
+    {
+      "text": "Explore our care pathways",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      },
+      "tagName": "BUTTON"
+    }
+  ],
+  "links": [
+    {
+      "text": "",
+      "href": "https://www.evercare.ng/",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Patient Portal",
+      "href": "https://myevercare.evercare.ng/",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Book an Appointment",
+      "href": "https://www.evercare.ng/team",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Book a Teleconsult",
+      "href": "https://www.evercare.ng/services/teleconsult",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Refer Patient",
+      "href": "https://www.evercare.ng/services/refer-a-patient",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "View Special Health Offers",
+      "href": "https://www.evercare.ng/services/special-offers/health-and-wellness-packages",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Request Second Opinion",
+      "href": "https://www.evercare.ng/services//second-opinion",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Book Homecare Visit",
+      "href": "https://www.evercare.ng/services/home-care",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "For Emergencies, Call 07000 2255 345",
+      "href": "tel:02017002273",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "WhatsApp - Chat With Us - 0810 7161 797",
+      "href": "https://api.whatsapp.com/send?phone=2348107161797&text=Hi&lang=en",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "English",
+      "href": "https://res.cloudinary.com/djucozzk4/image/upload/v1761729597/PATIENT_RIGHTS_AND_RESPONSIBILITIES_english_oohlje.pdf",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Yoruba",
+      "href": "https://res.cloudinary.com/djucozzk4/image/upload/v1761729597/PATIENT_RIGHTS_AND_RESPONSIBILITIES_yoruba_udftn4.pdf",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Hausa",
+      "href": "https://res.cloudinary.com/djucozzk4/image/upload/v1761729597/PATIENT_RIGHTS_AND_RESPONSIBILITIES_hausa_nxltqw.pdf",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Igbo",
+      "href": "https://res.cloudinary.com/djucozzk4/image/upload/v1761729597/PATIENT_RIGHTS_AND_RESPONSIBILITIES_igbo_j2tmxf.pdf",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Hindi",
+      "href": "https://res.cloudinary.com/djucozzk4/image/upload/v1761729597/PATIENT_RIGHTS_AND_RESPONSIBILITIES_hindi_brig1z.pdf",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(2, 8, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Find a doctor",
+      "href": "https://www.evercare.ng/team",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Explore careers",
+      "href": "https://www.evercare.ng/about-us//career",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Explore our care pathways",
+      "href": "https://www.evercare.ng/care-pathway",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "About Evercare",
+      "href": "https://www.evercare.ng/about-us/who-we-are",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Banana Island Clinic",
+      "href": "https://www.evercare.ng/about-us/banana-clinic",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "News & Media",
+      "href": "https://www.evercare.ng/media/blogs",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Contact Us",
+      "href": "https://www.evercare.ng/customer-support#contact",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Book a Doctor",
+      "href": "https://www.evercare.ng/team",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Book home care",
+      "href": "https://www.evercare.ng/services/home-care",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Request second opinion",
+      "href": "https://www.evercare.ng/services//second-opinion",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Request a teleconsult",
+      "href": "https://www.evercare.ng/services/teleconsult",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Refer a patient",
+      "href": "https://referral.evercare.ng/",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "View our special health offers",
+      "href": "https://www.evercare.ng/services/special-offers",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Make an online payment",
+      "href": "https://onlinepayment.evercare.ng/",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Purchase Order T&Cs",
+      "href": "https://res.cloudinary.com/djucozzk4/image/upload/v1737544670/resources/Evercare_Group_PO_Terms_and_Conditions_2025_z9ctlc.pdf",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgba(209, 213, 219, 0.9)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "0813 985 0710",
+      "href": "tel:08139850710",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "",
+      "href": "https://twitter.com/EverCareNG",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "",
+      "href": "https://www.tiktok.com/@evercarehospitallekki",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "",
+      "href": "https://www.facebook.com/EvercareHospitalLekki",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "",
+      "href": "https://www.instagram.com/evercarehospitallekki/",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "",
+      "href": "https://ng.linkedin.com/company/evercare-hospital-lekki",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "",
+      "href": "https://www.youtube.com/channel/UCMj0Z5fPEVj0bW04DP5MOJw",
+      "styles": {
+        "fontSize": "16px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Terms of Use",
+      "href": "https://www.evercare.ng/terms-and-conditions",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    },
+    {
+      "text": "Privacy Policy",
+      "href": "https://www.evercare.ng/policy",
+      "styles": {
+        "fontSize": "14px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Brown, sans-serif"
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://www.evercare.ng/_next/static/media/Logo.5f8a3ebe.svg",
+      "alt": "logo",
+      "width": 140,
+      "height": 29
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2FAbout-nav.webp&w=3840&q=75",
+      "alt": "About Us",
+      "width": 230,
+      "height": 205
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2FServices-nav.webp&w=3840&q=75",
+      "alt": "Services",
+      "width": 230,
+      "height": 205
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2FInitiatives-nav.webp&w=3840&q=75",
+      "alt": "Initiatives",
+      "width": 230,
+      "height": 205
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2FMedia-nav.webp&w=3840&q=75",
+      "alt": "News & Media",
+      "width": 230,
+      "height": 205
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2FCS-nav.webp&w=3840&q=75",
+      "alt": "Customer Support",
+      "width": 230,
+      "height": 205
+    },
+    {
+      "src": "https://www.evercare.ng/calendar.svg",
+      "alt": "Book an Appointment",
+      "width": 80,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/heart_and_stethoscope.svg",
+      "alt": "Book a Teleconsult",
+      "width": 80,
+      "height": 63
+    },
+    {
+      "src": "https://www.evercare.ng/refer_a_patient.svg",
+      "alt": "Refer Patient",
+      "width": 80,
+      "height": 106
+    },
+    {
+      "src": "https://www.evercare.ng/megaphone_marketing.svg",
+      "alt": "View Special Health Offers",
+      "width": 80,
+      "height": 83
+    },
+    {
+      "src": "https://www.evercare.ng/chart_and_statistics.svg",
+      "alt": "Request Second Opinion",
+      "width": 80,
+      "height": 64
+    },
+    {
+      "src": "https://www.evercare.ng/Red_cross_icon.svg",
+      "alt": "Book Homecare Visit",
+      "width": 80,
+      "height": 107
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2Femergencies.gif&w=3840&q=75",
+      "alt": "",
+      "width": 20,
+      "height": 20
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2FWhatsap-Icon-Animation.gif&w=3840&q=75",
+      "alt": "",
+      "width": 10,
+      "height": 10
+    },
+    {
+      "src": "https://www.evercare.ng/wave.svg",
+      "alt": "wave",
+      "width": 1280,
+      "height": 825
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=%2Frights-icon.png&w=256&q=75",
+      "alt": "Rights Icon",
+      "width": 100,
+      "height": 128
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1767696045%2Fuploads%2Fblogs%2Fback-to-school-health-tips.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1764594463%2Fuploads%2Fblogs%2Frecognizing-early-symptoms-liver-cancer-hepatocellular-carcinoma.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1754044904%2Fuploads%2Fblogs%2Fevercare-hospital-supply-chain-award-2025.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1752826801%2Fuploads%2Fblogs%2Ftdiqznbmwqap6r647n9e.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1735285014%2Fuploads%2Fblogs%2FRelieve%2520of%2520stress.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1729516176%2Fuploads%2Fblogs%2Fwhat-you-need-to-know-about-breast-cancer.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1724841195%2Fuploads%2Fblogs%2FFood%2520allergy%252C%2520food%2520intolerance%2520and%2520food%2520aversion.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1722604689%2Fuploads%2Fblogs%2FCommon%2520Breastfeeding%2520Struggles.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1722604591%2Fuploads%2Fblogs%2FBenefits%2520of%2520breastfeeding%2520to%2520Mother%2520and%2520Child.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1722265354%2Fuploads%2Fblogs%2FMyths%2520and%2520Facts%2520about%2520Hepatitis.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1722584746%2Fuploads%2Fblogs%2FThe%2520ABCs%2520of%2520Hepatitis.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1721132566%2Fuploads%2Fblogs%2FSteps%2520to%2520reduce%2520cancer%2520risk.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1720622415%2Fuploads%2Fblogs%2FParamedics%3AThe%2520heroes.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1720433511%2Fuploads%2Fblogs%2FHow%2520to%2520prepare%2520for%2520emergency.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1718876831%2Fuploads%2Fblogs%2FWhat%2520you%2520need%2520to%2520know%2520about%2520cholera.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1718785167%2Fuploads%2Fblogs%2FUnderstanding%2520the%2520Prostate.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1718636898%2Fuploads%2Fblogs%2Fmen%2520and%2520their%2520mental%2520health.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1718878400%2Fuploads%2Fblogs%2Fwhy-does-my-baby-cry-so-much.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716471475%2Fuploads%2Fblogs%2FHow%2520to%2520take%2520care%2520of%2520the%2520kidney.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716433232%2Fuploads%2Fblogs%2F10%2520Signs%2520Of%2520Heart%2520Disease%2520People%2520Ignore.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716433127%2Fuploads%2Fblogs%2FWhat%2520Cereals%2520Are%2520Safe%2520For%2520Babies.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716433085%2Fuploads%2Fblogs%2FBowel%2520Issues%2520Or%2520Difficulty%2520Pooping.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716433039%2Fuploads%2Fblogs%2FIs%2520Diabetes%2520Sneaking%2520Up%2520on%2520You.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432747%2Fuploads%2Fblogs%2FWhy%2520Laparoscopic%2520Surgery%2520May%2520Take%2520the%2520Place%2520of%2520Open%2520Surgery.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1758265244%2Fuploads%2Fblogs%2FWhat-You-Need-to-Know-About-Cancer.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432579%2Fuploads%2Fblogs%2FCaring%2520For%2520Your%2520Ears%2520The%2520Right%2520Way.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432523%2Fuploads%2Fblogs%2FHow%2520To%2520Treat%2520Your%2520Kidneys%2520Right.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432456%2Fuploads%2Fblogs%2FCaring%2520For%2520Your%2520Brain.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432386%2Fuploads%2Fblogs%2F4%2520Common%2520Eye%2520Problems%2520And%2520How%2520You%2520Can%2520Avoid%2520Them.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432296%2Fuploads%2Fblogs%2FDental%2520Hygiene.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432241%2Fuploads%2Fblogs%2FHow%2520to%2520Keep%2520Your%2520Heart%2520in%2520Good%2520Condition.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432194%2Fuploads%2Fblogs%2FBenefits%2520of%2520Antenatal%2520for%2520Mother%2520and%2520Child.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432136%2Fuploads%2Fblogs%2FPrimary%2520Causes%2520Of%2520Hypertension.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432077%2Fuploads%2Fblogs%2FCow%2520Warts%252C%2520Nuns%2520and%2520Priests.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716432021%2Fuploads%2Fblogs%2FBRAIN%2520TUMORS.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431971%2Fuploads%2Fblogs%2FTHE%2520LOOMING%2520END%2520OF%2520ARTHRITIS.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431890%2Fuploads%2Fblogs%2FTIPS%2520TO%2520REMEMBER%2520DURING%2520A%2520MEDICAL%2520EMERGENCY.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431836%2Fuploads%2Fblogs%2FROOT%2520CANAL.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431781%2Fuploads%2Fblogs%2FWHEN%2520TO%2520SEE%2520A%2520DERMATOLOGIST.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431731%2Fuploads%2Fblogs%2FCOMPUTER%2520VISION%2520SYNDROME.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431682%2Fuploads%2Fblogs%2F5%2520SIGNS%2520YOU%2520NEED%2520A%2520HIP%2520REPLACEMENT.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431633%2Fuploads%2Fblogs%2FBRAIN%2520TUMORS.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431583%2Fuploads%2Fblogs%2FEvercare%2520Hospital%2520is%2520the%2520Leading%2520Hospital%2520In%2520Lagos.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431529%2Fuploads%2Fblogs%2FHow%2520Evercare%2520Hospital%2520is%2520Revolutionizing%2520Cancer%2520Care%2520in%2520Lagos.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431461%2Fuploads%2Fblogs%2FWhy%2520Choose%2520Evercare%2520Hospital%2520Lekki.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431393%2Fuploads%2Fblogs%2FChild%2520Immunization.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431335%2Fuploads%2Fblogs%2FQuality%2520Mother%2520and%2520Child%2520Care%2520Packages.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431264%2Fuploads%2Fblogs%2FWhere%2520Excellence%2520Defines%2520Hospital%2520Experiences.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431182%2Fuploads%2Fblogs%2FThe%2520Importance%2520of%2520Preventive%2520Healthcare%2520In%2520Men%2520and%2520Women.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431099%2Fuploads%2Fblogs%2FManaging%2520Arthritis.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716431026%2Fuploads%2Fblogs%2FBest%2520Laparoscopic%2520Surgery%2520Hospital%2520in%2520Lagos.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430964%2Fuploads%2Fblogs%2FUnderstanding%2520Blood%2520Disorders.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430789%2Fuploads%2Fblogs%2F10%2520Basic%2520Endoscopic%2520Procedures.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430708%2Fuploads%2Fblogs%2FThe%2520Role%2520of%2520Telemedicine.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430656%2Fuploads%2Fblogs%2FUnderstanding%2520Interventional%2520Cardiology.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430588%2Fuploads%2Fblogs%2FUnderstanding%2520Neonatal%2520Intensive%2520Care%2520Unit%2520%2528NICU%2529%2520Care.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430522%2Fuploads%2Fblogs%2FLiving%2520with%2520Chronic%2520Pain.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430454%2Fuploads%2Fblogs%2FComplex%2520Mental%2520Health%2520Disorders.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430371%2Fuploads%2Fblogs%2FUnderstanding%2520the%2520Impact%2520of%2520Nutrition.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430296%2Fuploads%2Fblogs%2FNavigating%2520Joint%2520Health%2520During%2520Harmattan.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430210%2Fuploads%2Fblogs%2FPractical%2520Tips%2520for%2520Preventing%2520Cold%2520and%2520Flu.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430142%2Fuploads%2Fblogs%2FThe%2520Art%2520of%2520Mindful%2520Holiday%2520Celebrations.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1716430043%2Fuploads%2Fblogs%2F2024%2520New%2520year%2520Resolutions.jpg&w=3840&q=75",
+      "alt": "blog image",
+      "width": 379,
+      "height": 260
+    },
+    {
+      "src": "https://www.evercare.ng/tpg.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/rise.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/ifc.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/philips.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/cdc.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/adb.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/proparco.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/bill.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/medtronic.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/nsia.svg",
+      "alt": "sponsor logo",
+      "width": 100,
+      "height": 68
+    },
+    {
+      "src": "https://www.evercare.ng/_next/static/media/Logo.5f8a3ebe.svg",
+      "alt": "...",
+      "width": 200,
+      "height": 42
+    },
+    {
+      "src": "https://www.evercare.ng/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjucozzk4%2Fimage%2Fupload%2Fv1767368273%2Fuploads%2Fbanner%2Fvqupxrntupkawl2cdu02.jpg&w=1200&q=75",
+      "alt": "",
+      "width": 560,
+      "height": 404
+    }
+  ],
+  "forms": [],
+  "textSamples": [
+    {
+      "text": "Home",
+      "color": "rgb(68, 200, 245)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 10.826013762267838,
+      "passesAA": true
+    },
+    {
+      "text": "Book an Appointment",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "14px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Patient Portal",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "14px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Evercare Hospital Lekki",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "48px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "Evercare Hospital Lekki is a 165-bed, purpose-buil",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "165",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "30px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "Bed Spaces",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "35",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "30px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "Specialties",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "700",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "30px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "Caregivers",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 21,
+      "passesAA": true
+    },
+    {
+      "text": "Book an Appointment",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "24px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Book a Teleconsult",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "24px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Refer Patient",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "24px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "View Special Health Offers",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "24px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Request Second Opinion",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "24px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Book Homecare Visit",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "24px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Evercare Hospital Lekki Limited",
+      "color": "rgb(3, 52, 109)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "30px",
+      "contrastRatio": 1.7158937502759797,
+      "passesAA": false
+    },
+    {
+      "text": "Evercare hospital Lekki Limited is a 165-bed purpo",
+      "color": "rgb(3, 52, 109)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "18px",
+      "contrastRatio": 1.7158937502759797,
+      "passesAA": false
+    },
+    {
+      "text": "Patient Testimonials:",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "36px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Hear From Those Who Have Experienced Our Care Firs",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "30px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Successful Minimally Invasive Surgery of Hirschspr",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Transformative Recovery After Successful Cervical ",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Patient Testimonial: A Success Story of Pyloric St",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Facts All Men Should Know About Sexual Health Prob",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Patient Testimonial A Success Story of Thyroidecto",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Patient Testimonial: Successful Knee Replacement S",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Patient Testimonial: Successful Treatment of Prost",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Patient Testimonial: Successful Orthopaedic Surger",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "Click to view your rights & Responsibilities as a ",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "fontSize": "30px",
+      "contrastRatio": 14.284696271142446,
+      "passesAA": true
+    },
+    {
+      "text": "Newsletters, Blogposts, Health Tips",
+      "color": "rgb(6, 42, 85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "30px",
+      "contrastRatio": 1.47010476116483,
+      "passesAA": false
+    },
+    {
+      "text": "We provide general information and discussion to p",
+      "color": "rgb(2, 8, 23)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 1.049686766642052,
+      "passesAA": false
+    },
+    {
+      "text": "Back to School: Essential Health Tips for a Happy ",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "January 06,2026",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "Are You at Risk? Recognizing the Early Symptoms of",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "December 01,2025",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "Evercare Hospital Lekki Wins 2025 Healthcare & Pha",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "August 01,2025",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "Developing the Future of Healthcare Leadership Acr",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "July 18,2025",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "HOW TO RELIEVE STRESS DURING HOLIDAYS",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "December 27,2024",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "BREAST CANCER: WHAT YOU NEED TO KNOW",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "October 21,2024",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "Understanding Food Allergies, Intolerances, and Av",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "August 28,2024",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "Common Breastfeeding Struggles and How to Approach",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "August 02,2024",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    },
+    {
+      "text": "Benefits of breastfeeding to Mother and Child",
+      "color": "rgb(45, 156, 219)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "16px",
+      "contrastRatio": 6.889859077556246,
+      "passesAA": true
+    },
+    {
+      "text": "August 02,2024",
+      "color": "rgb(110, 110, 110)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontSize": "12px",
+      "contrastRatio": 4.118529274156548,
+      "passesAA": false
+    }
+  ]
+}

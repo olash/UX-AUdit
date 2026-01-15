@@ -1,0 +1,11 @@
+{
+    "name": "ux-audit-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "echo 'No frontend dev script yet'",
+        "build": "echo 'No frontend build script yet'"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

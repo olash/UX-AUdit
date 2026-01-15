@@ -1,0 +1,92 @@
+<!-- Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+    <div>
+        <h1 class="text-xl font-medium tracking-tight text-slate-900">Dashboard</h1>
+        <p class="text-sm text-slate-500 mt-1">Manage your audits and view performance insights.</p>
+    </div>
+    <div>
+        <a href="Create New Audit.html"
+            class="group inline-flex items-center justify-center gap-2 bg-slate-950 hover:bg-slate-800 text-white text-xs font-medium px-4 py-2.5 rounded shadow-sm shadow-slate-300/50 transition-all focus:ring-2 focus:ring-slate-950 focus:ring-offset-2">
+            <span class="iconify transition-transform group-hover:rotate-90" data-icon="lucide:plus" data-width="14"
+                data-stroke-width="1.5"></span>
+            Run New Audit
+        </a>
+    </div>
+</div>
+
+<!-- Overview Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <!-- Card 1 -->
+    <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-[0px_2px_4px_rgba(0,0,0,0.02)]">
+        <div class="flex justify-between items-start mb-4">
+            <div class="p-2 bg-slate-50 rounded border border-slate-100">
+                <span class="iconify text-slate-600" data-icon="lucide:files" data-width="16"></span>
+            </div>
+        </div>
+        <div>
+            <p class="text-xs font-medium text-slate-500 mb-0.5">Total Audits</p>
+            <h3 class="text-2xl font-medium tracking-tight text-slate-900" id="stat-total">--</h3>
+        </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-[0px_2px_4px_rgba(0,0,0,0.02)]">
+        <div class="flex justify-between items-start mb-4">
+            <div class="p-2 bg-slate-50 rounded border border-slate-100">
+                <span class="iconify text-slate-600" data-icon="lucide:activity" data-width="16"></span>
+            </div>
+        </div>
+        <div>
+            <p class="text-xs font-medium text-slate-500 mb-0.5">Active</p>
+            <div class="flex items-baseline gap-2">
+                <h3 class="text-2xl font-medium tracking-tight text-slate-900" id="stat-active">--</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-[0px_2px_4px_rgba(0,0,0,0.02)]">
+        <div class="flex justify-between items-start mb-4">
+            <div class="p-2 bg-slate-50 rounded border border-slate-100">
+                <span class="iconify text-slate-600" data-icon="lucide:check-circle" data-width="16"></span>
+            </div>
+        </div>
+        <div>
+            <p class="text-xs font-medium text-slate-500 mb-1">Completed</p>
+            <h3 class="text-2xl font-medium tracking-tight text-slate-900" id="stat-completed">--</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Section -->
+<div class="bg-white rounded-lg border border-slate-200 shadow-[0px_2px_4px_rgba(0,0,0,0.02)] overflow-hidden">
+    <!-- Table Header -->
+    <div class="px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h3 class="font-medium text-sm text-slate-900">Recent Audits</h3>
+        <button onclick="fetchAudits()"
+            class="p-1.5 bg-white border border-slate-200 rounded hover:bg-slate-50 text-slate-600 transition-colors">
+            <span class="iconify" data-icon="lucide:refresh-cw" data-width="14"></span>
+        </button>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="border-b border-slate-100 bg-slate-50/50">
+                    <th class="py-3 px-6 text-[11px] font-medium uppercase tracking-wider text-slate-500">
+                        Website</th>
+                    <th class="py-3 px-6 text-[11px] font-medium uppercase tracking-wider text-slate-500">Status
+                    </th>
+                    <th class="py-3 px-6 text-[11px] font-medium uppercase tracking-wider text-slate-500">Date
+                    </th>
+                    <th class="py-3 px-6 text-[11px] font-medium uppercase tracking-wider text-slate-500 text-right">
+                        View Results</th>
+                </tr>
+            </thead>
+            <tbody id="audit-list" class="divide-y divide-slate-100">
+                <tr>
+                    <td colspan="4" class="px-6 py-4 text-center text-sm text-slate-500">Loading audits...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

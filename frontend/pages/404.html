@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Antigravity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full text-center">
+        <div class="mb-6 flex justify-center">
+            <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center ring-8 ring-slate-50">
+                <span class="iconify text-slate-400" data-icon="lucide:search-x" data-width="32"></span>
+            </div>
+        </div>
+
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Page not found</h1>
+        <p class="text-sm text-slate-500 mb-8 max-w-xs mx-auto">
+            Sorry, we couldn't find the page you're looking for. It might have been moved or doesn't exist.
+        </p>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button onclick="window.history.back()"
+                class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
+                <span class="iconify" data-icon="lucide:arrow-left" data-width="16"></span>
+                Go back
+            </button>
+            <a href="Dashboard_Homepage.html"
+                class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-900 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-slate-800 transition-colors shadow-sm">
+                <span class="iconify" data-icon="lucide:home" data-width="16"></span>
+                Go to Dashboard
+            </a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
