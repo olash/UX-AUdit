@@ -70,41 +70,60 @@
 <body class="bg-slate-50 text-slate-900 font-sans selection:bg-slate-900 selection:text-white">
 
     <!-- NAVIGATION -->
-    <nav class="fixed top-0 w-full z-50 glass h-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <div class="flex justify-between items-center h-full">
+    <nav class="fixed top-0 w-full z-50 border-b border-slate-200 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
                 <!-- Logo -->
-                <a href="Landing Page.html" class="flex items-center gap-2.5 group">
+                <a href="/index.html" class="flex items-center gap-2 group">
                     <div
-                        class="w-8 h-8 bg-slate-950 rounded-lg text-white flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shadow-sm">
-                        <span class="iconify" data-icon="lucide:layers" data-width="18" data-stroke-width="1.5"></span>
+                        class="w-8 h-8 bg-slate-900 rounded text-white flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                        <span class="iconify" data-icon="lucide:scan-eye" data-width="18"
+                            data-stroke-width="1.5"></span>
                     </div>
-                    <span class="font-semibold text-base tracking-tight text-slate-950">UXAudit</span>
+                    <span class="font-semibold text-lg tracking-tight text-slate-900">UX Audit</span>
                 </a>
 
-                <!-- Nav Links (Context Aware) -->
-                <div class="hidden md:flex space-x-8 items-center" id="nav-links">
-                    <a href="Pricing.html"
-                        class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Pricing</a>
-                    <a href="Login.html"
-                        class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Log in</a>
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="/index.html#how-it-works"
+                        class="text-sm font-medium text-slate-600 hover:text-slate-900">How it works</a>
+                    <a href="/index.html#features"
+                        class="text-sm font-medium text-slate-600 hover:text-slate-900">Features</a>
+                    <a href="Pricing.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Pricing</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="Login.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sign in</a>
                     <a href="Signup.html"
-                        class="bg-slate-950 hover:bg-slate-800 text-white text-sm font-medium px-4 py-2 rounded-md shadow-sm transition-all">Sign
-                        Up</a>
+                        class="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none bg-slate-900 text-white hover:bg-slate-900/90 h-9 px-4 py-2">
+                        Get Started
+                    </a>
                 </div>
 
-                <!-- Authenticated Nav (Hidden by default) -->
-                <div class="hidden md:flex space-x-4 items-center" id="auth-nav-links" style="display: none;">
-                    <a href="Create New Audit.html"
-                        class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-medium px-3 py-1.5 rounded-md transition-colors flex items-center gap-2">
-                        <span class="iconify" data-icon="lucide:plus" data-width="16"></span> New Audit
-                    </a>
-                    <div
-                        class="w-8 h-8 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center text-xs font-medium text-slate-600 cursor-pointer">
-                        JD</div>
-                </div>
+                <!-- Mobile Menu Toggle -->
+                <button id="menuToggle" class="md:hidden p-2 text-slate-600">
+                    <span class="iconify" data-icon="lucide:menu" data-width="24"></span>
+                </button>
             </div>
-        </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu"
+                class="hidden md:hidden absolute top-16 left-0 w-full bg-white border-b border-slate-200 p-4 shadow-lg z-50">
+                <nav class="flex flex-col gap-4">
+                    <a href="/index.html#how-it-works"
+                        class="text-sm font-medium text-slate-600 hover:text-slate-900">How it works</a>
+                    <a href="/index.html#features"
+                        class="text-sm font-medium text-slate-600 hover:text-slate-900">Features</a>
+                    <a href="Pricing.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Pricing</a>
+                    <hr class="border-slate-100">
+                    <a href="Login.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sign in</a>
+                    <a href="Signup.html"
+                        class="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors bg-slate-900 text-white hover:bg-slate-900/90 h-9 px-4 py-2">
+                        Get Started
+                    </a>
+                </nav>
+            </div>
     </nav>
 
     <!-- MAIN APP CONTAINER -->
