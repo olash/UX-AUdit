@@ -64,11 +64,18 @@ router.get("/", async (req, res) => {
         const user = await getUserFromRequest(req);
         if (!user) return res.status(401).json({ error: 'Unauthorized' });
 
-        const { data, error } = await supabase
+        let query = supabase
             .from('projects')
             .select('*')
             .eq('user_id', user.id)
             .order('created_at', { ascending: false });
+
+        // Filter by status if provided
+        if (req.query.status) {
+            query = query.eq('status', req.query.status);
+        }
+
+        const { data, error } = await query;
 
         if (error) throw error;
 

@@ -78,6 +78,19 @@ const App = {
         return data;
     },
 
+    // User Data Helpers
+    async getProfile() {
+        return await App.api.get('/me');
+    },
+
+    async getUsage() {
+        return await App.api.get('/usage');
+    },
+
+    async getSubscription() {
+        return await App.api.get('/subscription');
+    },
+
     logout: async () => {
         const { error } = await supabase.auth.signOut();
         if (error) throw error;
@@ -118,8 +131,9 @@ const App = {
 
     // Domain Helpers
     audits: {
-        async getAll() {
-            return await App.api.get('/audits');
+        async getAll(filters = {}) {
+            const query = new URLSearchParams(filters).toString();
+            return await App.api.get(`/audits?${query}`);
         },
 
         async get(id) {

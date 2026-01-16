@@ -1,0 +1,38 @@
+<div class="mb-8">
+    <h1 class="text-xl font-medium tracking-tight text-slate-900">Create New Audit</h1>
+    <p class="text-sm text-slate-500 mt-1">Configure your settings to start analyzing a new website.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+    <!-- LEFT COLUMN: Input Form -->
+    <div class="lg:col-span-2 space-y-6">
+        <div class="bg-white rounded-lg border border-slate-200 shadow-[0px_2px_4px_rgba(0,0,0,0.02)] p-6">
+            <!-- URL Input -->
+            <div class="mb-8">
+                <label for="url" class="block text-xs font-medium text-slate-700 mb-2">Target URL</label>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="iconify text-slate-400" data-icon="lucide:link" data-width="16"></span>
+                    </div>
+                    <input type="url" id="url" name="url"
+                        class="block w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-md text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-slate-950 focus:border-slate-950 transition-all shadow-sm"
+                        placeholder="https://example.com" autofocus="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="flex items-center justify-end gap-3">
+            <button
+                class="px-4 py-2.5 rounded text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+                onclick="window.location.href='/pages/Dashboard_Homepage.html'">
+                Cancel
+            </button>
+            <button id="start-btn"
+                class="group inline-flex items-center justify-center gap-2 bg-slate-950 hover:bg-slate-800 text-white text-xs font-medium px-6 py-2.5 rounded shadow-sm transition-all focus:ring-2 focus:ring-slate-950 focus:ring-offset-2">
+                <span class="iconify" data-icon="lucide:play" data-width="14" data-stroke-width="1.5"></span>
+                Start Audit
+            </button>
+        </div>
+    </div>
+</div>

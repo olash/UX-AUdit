@@ -3,6 +3,7 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from 'url';
 import auditRoutes from "./api/audits.js";
+import userRoutes from "./api/users.js";
 import dotenv from "dotenv";
 
 // Load environment variables from root
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/audits", auditRoutes);
+app.use("/api", userRoutes); // Mount at /api so we get /api/me, /api/usage
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

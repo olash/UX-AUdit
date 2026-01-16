@@ -62,10 +62,46 @@ const Layout = {
             // Initialize Icons
             if (window.Iconify) window.Iconify.scan();
 
+            // Load Notifications (Async)
+            this.loadNotifications();
+
             return true;
         } catch (error) {
             console.error("Failed to load layout:", error);
             return false;
+        }
+    },
+
+    loadNotifications: async function () {
+        try {
+            const notifMenu = document.getElementById('notifMenu');
+            // Simplified: Fetch recent completed audits
+            const audits = await App.audits.getAll({ status: 'completed' });
+
+            // Filter primarily for recent ones, or just show last 5 completed
+            const recent = audits.slice(0, 5);
+
+            if (recent.length > 0 && notifMenu) {
+                notifMenu.innerHTML = recent.map(a => `
+                    <div class="px-4 py-3 border-b border-slate-100 last:border-0 hover:bg-slate-50 cursor-pointer" onclick="window.location.href='/pages/Dashboard_Recent Audit Page [View Result].html?id=${a.id}'">
+                        <p class="text-xs font-semibold text-slate-900">Audit Completed</p>
+                        <p class="text-[10px] text-slate-500 truncate">${a.url}</p>
+                    </div>
+                `).join('');
+
+                // Add "view all" link
+                // notifMenu.innerHTML += ...
+
+                // Show red dot
+                const badge = document.querySelector('#notifBtn span.absolute');
+                if (badge) badge.style.display = 'block';
+            } else if (notifMenu) {
+                notifMenu.innerHTML = '<p class="text-sm text-slate-500 p-4">No new notifications</p>';
+                const badge = document.querySelector('#notifBtn span.absolute');
+                if (badge) badge.style.display = 'none';
+            }
+        } catch (e) {
+            console.error("Failed to load notifications", e);
         }
     },
 
