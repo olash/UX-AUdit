@@ -99,7 +99,7 @@ const App = {
 
     // API Helper
     api: {
-        baseUrl: 'http://localhost:4000/api',
+        baseUrl: 'https://ux-audit-api.onrender.com',
 
         async getAuthHeaders() {
             const { data } = await supabase.auth.getSession();
@@ -112,14 +112,14 @@ const App = {
 
         async get(endpoint) {
             const headers = await this.getAuthHeaders();
-            const res = await fetch(`${this.baseUrl}${endpoint}`, { headers });
+            const res = await fetch(`${this.baseUrl}/api${endpoint}`, { headers });
             if (!res.ok) throw new Error(`API Error: ${res.statusText}`);
             return res.json();
         },
 
         async post(endpoint, body) {
             const headers = await this.getAuthHeaders();
-            const res = await fetch(`${this.baseUrl}${endpoint}`, {
+            const res = await fetch(`${this.baseUrl}/api${endpoint}`, {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(body)
