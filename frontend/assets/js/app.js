@@ -92,9 +92,8 @@ const App = {
     },
 
     logout: async () => {
-        const { error } = await supabase.auth.signOut();
-        if (error) throw error;
-        window.location.href = '/pages/Landing Page.html';
+        await supabase.auth.signOut();
+        window.location.replace('/pages');
     },
 
     // API Helper
